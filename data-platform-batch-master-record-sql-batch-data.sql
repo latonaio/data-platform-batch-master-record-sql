@@ -5,17 +5,19 @@ CREATE TABLE `data_platform_batch_master_record_batch_data`
     `Plant`                 varchar(4) NOT NULL,
     `Batch`                 varchar(10) NOT NULL,
     `ValidityStartDate`     date NOT NULL,
+    `ValidityStartTime`     time NOT NULL,
     `ValidityEndDate`       date NOT NULL,
-    `CountryOfOrigin`       varchar(3) DEFAULT NULL,
+    `ValidityEndTime`       date NOT NULL,
     `ManufactureDate`       date DEFAULT NULL,
-    `CreationDateTime`      datetime DEFAULT NULL,
-    `LastChangeDateTime`    datetime DEFAULT NULL,
+    `CreationDate`          date NOT NULL,
+    `CreationTime`          time NOT NULL,
+    `LastChangeDate`        date NOT NULL,
+    `LastChangeTime`        time NOT NULL,
     `IsMarkedForDeletion`   tinyint(1) DEFAULT NULL,
 
     PRIMARY KEY (`BusinessPartner`, `Product`, `Plant`, `Batch`),
     
-    CONSTRAINT `DataPlatformBatchMasterRecordBatchDataProduct_fk` FOREIGN KEY (`Product`, `BusinessPartner`) REFERENCES `data_platform_product_master_business_partner_data` (`Product`, `BusinessPartner`),
-    CONSTRAINT `DataPlatformBatchMasterRecordCountryOfOrigin_fk` FOREIGN KEY (`CountryOfOrigin`) REFERENCES `data_platform_country_country_data` (`Country`)
+    CONSTRAINT `DataPlatformBatchMasterRecordBatchDataProduct_fk` FOREIGN KEY (`Product`, `BusinessPartner`, `Plant`) REFERENCES `data_platform_product_master_bp_plant_data` (`Product`, `BusinessPartner`, `Plant`)
 
 ) ENGINE = InnoDB
   DEFAULT CHARSET = utf8mb4;
