@@ -15,7 +15,7 @@ CREATE TABLE `data_platform_batch_master_record_batch_data`
     `LastChangeTime`        time NOT NULL,
     `IsMarkedForDeletion`   tinyint(1) DEFAULT NULL,
 
-    PRIMARY KEY (`BusinessPartner`, `Product`, `Plant`, `Batch`),
+    PRIMARY KEY (`Product`, `BusinessPartner`, `Plant`, `Batch`),
     
     CONSTRAINT `DataPlatformBatchMasterRecordBatchDataProduct_fk` FOREIGN KEY (`Product`, `BusinessPartner`, `Plant`) REFERENCES `data_platform_product_master_bp_plant_data` (`Product`, `BusinessPartner`, `Plant`)
 
