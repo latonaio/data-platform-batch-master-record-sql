@@ -7,7 +7,7 @@ CREATE TABLE `data_platform_batch_master_record_batch_data`
     `ValidityStartDate`     date NOT NULL,
     `ValidityStartTime`     time NOT NULL,
     `ValidityEndDate`       date NOT NULL,
-    `ValidityEndTime`       date NOT NULL,
+    `ValidityEndTime`       time NOT NULL,
     `ManufactureDate`       date DEFAULT NULL,
     `CreationDate`          date NOT NULL,
     `CreationTime`          time NOT NULL,
@@ -16,7 +16,7 @@ CREATE TABLE `data_platform_batch_master_record_batch_data`
     `IsMarkedForDeletion`   tinyint(1) DEFAULT NULL,
 
     PRIMARY KEY (`Product`, `BusinessPartner`, `Plant`, `Batch`),
-    
+
     CONSTRAINT `DataPlatformBatchMasterRecordBatchDataProduct_fk` FOREIGN KEY (`Product`, `BusinessPartner`, `Plant`) REFERENCES `data_platform_product_master_bp_plant_data` (`Product`, `BusinessPartner`, `Plant`)
 
 ) ENGINE = InnoDB
